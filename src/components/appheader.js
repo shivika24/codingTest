@@ -1,5 +1,11 @@
 import React from "react";
 import './coding.css';
+import {
+    BrowserRouter as Router,
+    Link,
+    Route,
+    Switch,
+  } from 'react-router-dom';
 //app header
 import styled from 'styled-components'
 const Img= styled.img`
@@ -9,7 +15,7 @@ function Appheader() {
     return (
         <React.Fragment>
             <header className="App-header">
-            <Img src="https://marketplace.magento.com/media/customer/MAG005503595/mm_avatar.png" alt="logo image"/>
+            <Link to="/"><Img src="https://marketplace.magento.com/media/customer/MAG005503595/mm_avatar.png" alt="logo image"/></Link>
             </header>
         </React.Fragment>
     );

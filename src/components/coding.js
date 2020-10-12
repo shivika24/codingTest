@@ -20,7 +20,7 @@ const validate = {
       .max(2000, error.CHARACTER_COUNT),
     solution2: Yup.string()
       .required(error.REQUIRED)
-      .max(2000, error.CHARACTER_COUNT) ,
+      .max(2000,error.CHARACTER_COUNT),
   }
 const Coding = ({ label, ...props }) => {
   const [questions,setQuestions] = useState([]);
