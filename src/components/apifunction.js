@@ -5,6 +5,8 @@ const setElementById=(id,val)=>{
 const getById=id=>{
   return document.getElementById(id);
 }
+
+//to add the solutions in the db
 export const apifetch=solution=>
 {
     fetch("http://localhost:8080/api/solutions/addSolution", {
@@ -35,6 +37,8 @@ export const apifetch=solution=>
           }          
         })
 }
+
+//to get the questions from db
 export const getQuestions=()=>
 {
   let arr = [];
