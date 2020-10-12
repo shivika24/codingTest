@@ -18,21 +18,22 @@ export const apifetch=solution=>
         })
       .then(res=> res.json())
         .then(res => {
-          console.log(res.code)
           if(res.code===0)
           {
-            setElementById("modal-body",error.ALREADY_SUBMITTED)
+            getById("alert").style.display="block";
+            window.scrollTo(0, 0);
           }
           else if(res.code===2)
-          {
-              getById("myBtn").addEventListener("click", function() {
-              getById("b1").style.display="none";
-            })           
-            setElementById("modal-body",error.SUBMITTED_SUCCESSFULLY);
+          {       
+            getById("alert").style.display="none";
+            getById("b1").style.display="none";   
             getById("submitHead").style.display="block";
+            window.scrollTo(0, 0);
           } 
           else if(res.code===2)
           {
+            getById("alert").style.display="none";
+            getById("submitHead").style.display="none";
             setElementById("modal-body",error.ERROR_OCCURED);
           }          
         })
@@ -51,7 +52,6 @@ export const getQuestions=()=>
       .then(res=> res.json())
         .then(res => {
           arr.push(res.questions) 
-          console.log(arr)
           return arr;      
         })      
 }

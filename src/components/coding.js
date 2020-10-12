@@ -36,6 +36,9 @@ const Coding = ({ label, ...props }) => {
   },[]);
     return (
       <div className="content">    
+        <div className="alert alert-danger" id="alert">
+        <strong>Alert!!</strong>Test Is Already Submitted From This Email Id..
+        </div>
       <center><h1 id="submitHead">Thanks For Submitting the Test!!!</h1></center>    
     <Formik
     initialValues= {{
