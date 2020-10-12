@@ -35,7 +35,7 @@ const Coding = ({ label, ...props }) => {
         })
   },[]);
     return (
-      <div>    
+      <div className="content">    
       <center><h1 id="submitHead">Thanks For Submitting the Test!!!</h1></center>    
     <Formik
     initialValues= {{

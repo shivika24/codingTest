@@ -3,12 +3,12 @@ import styled from 'styled-components'
 const Button = styled.button`
 background-color: #3174bc;
 color: white;
-height:50px;
+height:40px;
 width:120px;
 `;
 function Submitbutton(props) {
     return (
-        <div className="form-group">
+        <div className="form-group text-center">
         <Button className="btn mainbtn" type="submit" data-toggle="modal" data-target="#exampleModal" id="btn">
             Submit
         </Button>
@@ -24,7 +24,7 @@ function Submitbutton(props) {
         </button>
         </div>
        <div className="modal-body" id="modal-body">
-        <p>Resolve the errors</p>
+        <p className="colr-red">Resolve the errors</p>
        </div>
        <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

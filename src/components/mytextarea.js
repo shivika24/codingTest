@@ -2,13 +2,13 @@ import {useField } from 'formik';
 import React from 'react';
 import styled from 'styled-components'
 const StyledErrorMessage = styled.div`
-  font-size: 12px;
-  color: "red";
-  width: 400px;
-  &:before {
-    content: "❌ ";
-    font-size: 20px;
-  }
+color: red;
+border-color: red;
+float: left;
+border: 0;
+font-size: 14px;
+margin: 3px 0 5px;
+width: 100%;
   @media (prefers-color-scheme: dark) {
     color: var(--red-300);
   }

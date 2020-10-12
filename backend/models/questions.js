@@ -6,8 +6,8 @@ module.exports = (sequelize, Sequelize) => {
             allowNull:false, 
             primaryKey:true
         }, 
-        heading:    { type:Sequelize.STRING, allowNull:false, length:1000 },
-        question:   { type:Sequelize.STRING(1234) , allowNull:false },
+        heading:    { type:Sequelize.TEXT, allowNull:false, length:1000 },
+        question:   { type:Sequelize.TEXT , allowNull:false },
         createdAt:   Sequelize.DATE, 
         updatedAt:   Sequelize.DATE,
     }) 
