@@ -1,7 +1,9 @@
-const Joi   = require('@hapi/joi');
-const db    = require("../models");
-const Solutions  = db.solutions;
-const Questions = db.questions;
+const Joi                = require('@hapi/joi');
+const db                 = require("../models");
+const messages           = require('../messages');
+const constants          = require('../constants');
+const Solutions          = db.solutions;
+const Questions          = db.questions;
 
 //schema validation for solution entry
 const solutionValidation = data => {
@@ -20,9 +22,9 @@ exports.add = async function(req, res) {
   //to check data we are getting from the front end
 	const { error } = solutionValidation(req.body);
 	if (error) {
-		res.status(400).send({
+		res.status(constants.responseFlags.SCHEMA_STRUCTURE_INVALID).send({
 			code: -1,
-			message: "Schema Structure is invalid"
+			message: messages.errorMessages.SCHEMA_STRUCTURE_INVALID
 		});
 	}
   const email = req.body.email;
@@ -31,9 +33,9 @@ exports.add = async function(req, res) {
   let solution = await Solutions.findOne({ where: { email: email } });
   if(solution !== null) {
     //to send the response about already submitted solutions
-    res.status(200).send({
+    res.status(constants.responseFlags.RESPONSE_ALREADY_SUBMITTED).send({
       code: 0,
-      message: "response already submitted"
+      message: messages.errorMessages.RESPONSE_ALREADY_SUBMITTED
     });
   }
   else {
@@ -48,17 +50,19 @@ exports.add = async function(req, res) {
       // Save Solutions in the database
       let sol = await Solutions.create(solution)
       if(sol!==null) {
-        res.status(200).send({
-          code: 2
+        res.status(constants.responseFlags.SOLUTIONS_ADDED).send({
+          code: 2,
+          message: messages.errorMessages.SOLUTIONS_ADDED
         });
       }
   }
   }
   catch(err) {
     //if any error occured while executing any sql query
-    res.status(500).send({
+    res.status(constants.responseFlags.ERROR_OCCURED).send({
+      error:err,
       code: 1,
-      message: "Some error occurred while creating the Solution."
+      message: messages.errorMessages.ERROR_OCCURED
     });
   }
   };
@@ -72,9 +76,10 @@ exports.add = async function(req, res) {
       }
     }
     catch(err) {
-      res.status(500).send({
+      res.status(constants.responseFlags.ERROR_OCCURED).send({
+        error:err,
         message:
-          err.message || "Some error occurred while retrieving questions."
+          err.message || messages.errorMessages.ERROR_OCCURED
       });
     }
   }
