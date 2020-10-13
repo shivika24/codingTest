@@ -13,7 +13,11 @@ function App() {
     <div className="App">
       <Router>
       <Header/>
-      <Coding/> 
+      <Switch>
+            <Route exact path="/">
+                <Coding/>
+            </Route>
+      </Switch>
       </Router>    
     </div>
   );

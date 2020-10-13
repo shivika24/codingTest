@@ -5,13 +5,6 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
   operatorsAliases: false,
-
-  pool: {
-    max: dbConfig.pool.max,
-    min: dbConfig.pool.min,
-    acquire: dbConfig.pool.acquire,
-    idle: dbConfig.pool.idle
-  }
 });
 
 const db = {};
@@ -20,6 +13,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.questions = require("./questions.js")(sequelize, Sequelize);
-db.solutions = require("./books.js")(sequelize, Sequelize);
+db.solutions = require("./solutions.js")(sequelize, Sequelize);
 
 module.exports = db;

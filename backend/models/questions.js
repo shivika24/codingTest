@@ -1,4 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
+    //question db schema
     const Question = sequelize.define('question', { 
         sno:{ 
             type:Sequelize.INTEGER,  

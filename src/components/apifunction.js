@@ -9,6 +9,7 @@ const getById=id=>{
 //to add solutions to db
 export const apifetch=solution=>
 {
+    console.log("api function")
     fetch("http://localhost:8080/api/solutions/addSolution", {
         method: "POST",
         headers: {

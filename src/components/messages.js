@@ -5,6 +5,7 @@ let error = {
  ALREADY_SUBMITTED      : "Test Already Submitted From this Email-id",
  SUBMITTED_SUCCESSFULLY : "Test Submitted Successfully",
  ERROR_OCCURED          : "Some Error Occured",
- CHARACTER_COUNT        : "Optimise Your Solution!! Solution can not exceed 2000 characters!!"
+ CHARACTER_COUNT        : "Optimise Your Solution!! Solution can not exceed 2000 characters!!",
+ ALPHA_NUMERIC          : "Field should only contain AlphaNumeric values"
 }
 export default error;

@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react';  
 import {Formik} from 'formik';
+import Codingbody from './codingbody';
 import {apifetch,getQuestions} from './apifunction';
 import * as Yup from 'yup';    
 import Displayquestion from './displayquestion';
@@ -7,9 +8,27 @@ import error from './messages.js';
 import Submitbtn from './submitbutton'
 import Studentcredentials from './studentcredentials';
 import './coding.css'
+import {Editor} from '@tinymce/tinymce-react';
+import styled from 'styled-components'
+const StyledErrorMessage = styled.div`
+color: red;
+border-color: red;
+float: left;
+border: 0;
+font-size: 14px;
+margin: 3px 0 5px;
+width: 100%;
+  @media (prefers-color-scheme: dark) {
+    color: var(--red-300);
+  }
+`;
 
 const validate = {
     name: Yup.string()
+      .matches(
+        /^[a-z\d\-_\s]+$/i,
+      error.ALPHA_NUMERIC
+      )
       .max(15, error.FIRSTNAME_ERROR)
       .required(error.REQUIRED),
     email: Yup.string()
@@ -57,6 +76,7 @@ const Coding = ({ label, ...props }) => {
         solution1:values.solution1,
         solution2:values.solution2,
       }
+      console.log(data)
       apifetch(data);
     }}
     >
@@ -67,7 +87,11 @@ const Coding = ({ label, ...props }) => {
                        id="b1"
                     >
                       <Studentcredentials/>
-                      <Displayquestion questions={questions}/>
+                      <Displayquestion questions={questions[0]}/>
+                      <Codingbody question="solution1"/>
+  
+                      <Displayquestion questions={questions[1]}/>
+                      <Codingbody question="solution2"/>
                       <Submitbtn/>                      
                    </form>                 
               )}
